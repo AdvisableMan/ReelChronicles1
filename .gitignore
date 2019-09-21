@@ -75,3 +75,22 @@ Plugins/*/Intermediate/*
 
 # Cache files for the editor to use
 DerivedDataCache/*
+
+
+
+
+#################################
+########## C U S T O M ##########
+#################################
+
+Content/*
+!Content/AZRI/
+
+Source/*
+!Source/Animations/
+!Source/Animations.Target.cs
+!Source/AnimationsEditor.Target.cs
+
+Source/Animations/.vscode/
+
+SourceFiles/*
