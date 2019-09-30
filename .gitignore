@@ -85,6 +85,9 @@ DerivedDataCache/*
 
 Content/*
 !Content/AZRI/
+Content/AZRI/AnimationsRetarget/
+
+!Content/Effects/
 
 Source/*
 !Source/Animations/
