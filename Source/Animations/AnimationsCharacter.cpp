@@ -77,18 +77,13 @@ void AAnimationsCharacter::SetupPlayerInputComponent(class UInputComponent* Play
 	PlayerInputComponent->BindTouch(IE_Released, this, &AAnimationsCharacter::TouchStopped);
 
 	// VR headset functionality
-	PlayerInputComponent->BindAction("ResetVR", IE_Pressed, this, &AAnimationsCharacter::OnResetVR);
+	//PlayerInputComponent->BindAction("ResetVR", IE_Pressed, this, &AAnimationsCharacter::OnResetVR);
 }
 
 void AAnimationsCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 	//AnimBP = GetMesh()->GetAnimInstance();
-}
-
-void AAnimationsCharacter::OnResetVR()
-{
-	UHeadMountedDisplayFunctionLibrary::ResetOrientationAndPosition();
 }
 
 void AAnimationsCharacter::TouchStarted(ETouchIndex::Type FingerIndex, FVector Location)
