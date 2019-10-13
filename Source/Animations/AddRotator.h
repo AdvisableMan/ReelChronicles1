@@ -23,8 +23,8 @@ public:
 private:
 
 	UPROPERTY()
-		URotatorExpression* A = nullptr;
+	URotatorExpression* A = nullptr;
 
 	UPROPERTY()
-		URotatorExpression* B = nullptr;
+	URotatorExpression* B = nullptr;
 };

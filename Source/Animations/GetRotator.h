@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "RotatorExpression.h"
+#include "FloatExpression.h"
 #include "GetRotator.generated.h"
 
 /**
@@ -26,9 +27,6 @@ private:
 
 };
 
-/**
- *
- */
 UCLASS()
 class ANIMATIONS_API UGetRotatorImmediate : public URotatorExpression
 {
@@ -46,3 +44,51 @@ private:
 
 };
 
+UCLASS()
+class ANIMATIONS_API UGetRotatorPitch : public UFloatExpression
+{
+	GENERATED_BODY()
+
+public:
+
+	void SetInputs(URotatorExpression* InValue);
+
+	float Evaluate(const FEvaluationContext& InContext) override;
+
+private:
+
+	URotatorExpression* Source = nullptr;
+
+};
+UCLASS()
+class ANIMATIONS_API UGetRotatorYaw : public UFloatExpression
+{
+	GENERATED_BODY()
+
+public:
+
+	void SetInputs(URotatorExpression* InValue);
+
+	float Evaluate(const FEvaluationContext& InContext) override;
+
+private:
+
+	URotatorExpression* Source = nullptr;
+
+};
+UCLASS()
+class ANIMATIONS_API UGetRotatorRoll : public UFloatExpression
+{
+	GENERATED_BODY()
+
+public:
+
+	void SetInputs(URotatorExpression* InValue);
+
+	float Evaluate(const FEvaluationContext& InContext) override;
+
+private:
+
+	URotatorExpression* Source = nullptr;
+
+};

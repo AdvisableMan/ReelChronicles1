@@ -26,8 +26,11 @@ public:
 
     virtual void NativeUpdateAnimation(float DeltaSeconds) override;
 
-    UFUNCTION(BlueprintCallable, Category = "Script")
-    void LoadScript(UVoidExpression* InScript);
+	UFUNCTION(BlueprintCallable, Category = "Script")
+	void LoadScript(UVoidExpression* InScript);
+
+	UFUNCTION(BlueprintCallable, Category = "Script")
+	void LoadScripts(TArray<UVoidExpression*> InScripts);
 
 private:
 

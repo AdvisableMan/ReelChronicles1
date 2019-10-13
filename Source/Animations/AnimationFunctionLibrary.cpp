@@ -10,6 +10,7 @@
 #include "AddFloat.h"
 #include "MultiplyFloat.h"
 #include "AddRotator.h"
+#include "MakeRotatorExpression.h"
 #include "SmoothFloat.h"
 #include "SmoothFloatConst.h"
 #include "WeightedAverage2.h"
@@ -65,6 +66,30 @@ URotatorExpression* UAnimationFunctionLibrary::GetConstantRotator(FRotator Value
 
 	return Node;
 }
+UFloatExpression* UAnimationFunctionLibrary::GetRotatorPitch(URotatorExpression* Source)
+{
+	auto Node = NewObject<UGetRotatorPitch>(GetTransientPackage());
+
+	Node->SetInputs(Source);
+
+	return Node;
+}
+UFloatExpression* UAnimationFunctionLibrary::GetRotatorYaw(URotatorExpression* Source)
+{
+	auto Node = NewObject<UGetRotatorYaw>(GetTransientPackage());
+
+	Node->SetInputs(Source);
+
+	return Node;
+}
+UFloatExpression* UAnimationFunctionLibrary::GetRotatorRoll(URotatorExpression* Source)
+{
+	auto Node = NewObject<UGetRotatorRoll>(GetTransientPackage());
+
+	Node->SetInputs(Source);
+
+	return Node;
+}
 UVoidExpression* UAnimationFunctionLibrary::SetFloat(float& Target, UFloatExpression* Source)
 {
 	auto Node = NewObject<USetFloat>(GetTransientPackage());
@@ -104,6 +129,15 @@ URotatorExpression* UAnimationFunctionLibrary::AddRotator(URotatorExpression* A,
 	auto Node = NewObject<UAddRotator>(GetTransientPackage());
 
 	Node->SetInputs(A, B);
+
+	return Node;
+}
+
+URotatorExpression* UAnimationFunctionLibrary::MakeRotatorExpression(UFloatExpression* Pitch, UFloatExpression* Yaw, UFloatExpression* Roll)
+{
+	auto Node = NewObject<UMakeRotatorExpression>(GetTransientPackage());
+
+	Node->SetInputs(Pitch, Yaw, Roll);
 
 	return Node;
 }

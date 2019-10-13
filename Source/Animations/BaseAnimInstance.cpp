@@ -29,6 +29,17 @@ void UBaseAnimInstance::LoadScript(UVoidExpression* InScript)
         Scripts.Push(InScript);
     }
 }
+void UBaseAnimInstance::LoadScripts(TArray<UVoidExpression*> InScripts)
+{
+	if (InScripts[0] != nullptr)
+	{
+		for (int i = 0; i < InScripts.Num(); i++)
+		{
+			if (InScripts[i] != nullptr) { Scripts.Push(InScripts[i]); }
+		}
+	}
+
+}
 
 void UBaseAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 {

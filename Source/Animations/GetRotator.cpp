@@ -22,3 +22,27 @@ FRotator UGetRotatorImmediate::Evaluate(const FEvaluationContext& InContext)
 	return Value;
 }
 
+void UGetRotatorPitch::SetInputs(URotatorExpression* InValue)
+{
+	Source = InValue;
+}
+float UGetRotatorPitch::Evaluate(const FEvaluationContext& InContext)
+{
+	return Source->Evaluate(InContext).Pitch;
+}
+void UGetRotatorYaw::SetInputs(URotatorExpression* InValue)
+{
+	Source = InValue;
+}
+float UGetRotatorYaw::Evaluate(const FEvaluationContext& InContext)
+{
+	return Source->Evaluate(InContext).Yaw;
+}
+void UGetRotatorRoll::SetInputs(URotatorExpression* InValue)
+{
+	Source = InValue;
+}
+float UGetRotatorRoll::Evaluate(const FEvaluationContext& InContext)
+{
+	return Source->Evaluate(InContext).Roll;
+}
