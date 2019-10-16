@@ -12,6 +12,5 @@
 UCLASS()
 class ANIMATIONS_API UAZRIAnimInstance : public UBaseAnimInstance
 {
-	GENERATED_BODY()
-
+	GENERATED_BODY()		
 };

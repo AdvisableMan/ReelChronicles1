@@ -12,6 +12,5 @@ void UMakeRotatorExpression::SetInputs(UFloatExpression* InPitch, UFloatExpressi
 
 FRotator UMakeRotatorExpression::Evaluate(const FEvaluationContext& InContext)
 {
-	FRotator test = FRotator(0.0f, 0.0f, 0.0f);
 	return FRotator(Pitch->Evaluate(InContext), Yaw->Evaluate(InContext), Roll->Evaluate(InContext));
 }

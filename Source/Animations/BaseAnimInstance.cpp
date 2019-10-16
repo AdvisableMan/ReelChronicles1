@@ -31,14 +31,17 @@ void UBaseAnimInstance::LoadScript(UVoidExpression* InScript)
 }
 void UBaseAnimInstance::LoadScripts(TArray<UVoidExpression*> InScripts)
 {
-	if (InScripts[0] != nullptr)
+	for (auto&& Script : InScripts)
 	{
-		for (int i = 0; i < InScripts.Num(); i++)
-		{
-			if (InScripts[i] != nullptr) { Scripts.Push(InScripts[i]); }
-		}
+		if (Script) { Scripts.Push(Script); }
 	}
-
+	//if (InScripts[0] != nullptr)
+	//{
+	//	for (int i = 0; i < InScripts.Num(); i++)
+	//	{
+	//		if (InScripts[i] != nullptr) { Scripts.Push(InScripts[i]); }
+	//	}
+	//}
 }
 
 void UBaseAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
@@ -50,6 +53,7 @@ void UBaseAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
     FEvaluationContext Context;
 
     Context.DeltaTime = DeltaSeconds;
+	Context.World = GetOwningComponent()->GetWorld();
     Context.DoReset = bNeedsReset;
 
     // Evaluate scripts...

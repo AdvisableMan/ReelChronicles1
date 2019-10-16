@@ -10,5 +10,6 @@
 struct ANIMATIONS_API FEvaluationContext
 {
     float DeltaTime = 0.0f;
+	UWorld* World = nullptr;
     bool DoReset = false;
 };
