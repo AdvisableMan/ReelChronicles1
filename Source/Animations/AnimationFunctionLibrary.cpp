@@ -15,9 +15,12 @@
 #include "SmoothFloat.h"
 #include "SmoothFloatConst.h"
 #include "AddRotator.h"
+#include "MultiplyRotator.h"
 #include "SmoothRotator.h"
 #include "MakeRotatorExpression.h"
 #include "SmoothVector.h"
+#include "AddVector.h"
+#include "MultiplyVector.h"
 #include "MakeVectorExpression.h"
 #include "WeightedAverage2.h"
 #include "WeightedAverage3.h"
@@ -25,6 +28,7 @@
 #include "RemapFloat.h"
 #include "LineTrace.h"
 #include "GetSocketTransform.h"
+#include "GetLocationFromCameraDirection.h"
 
 
 // Get Float
@@ -271,6 +275,14 @@ URotatorExpression* UAnimationFunctionLibrary::AddRotator(URotatorExpression* A,
 
 	return Node;
 }
+URotatorExpression* UAnimationFunctionLibrary::MultiplyRotator(URotatorExpression* A, URotatorExpression* B)
+{
+	auto Node = NewObject<UMultiplyRotator>(GetTransientPackage());
+
+	Node->SetInputs(A, B);
+
+	return Node;
+}
 
 URotatorExpression* UAnimationFunctionLibrary::MakeRotatorExpression(UFloatExpression* Pitch, UFloatExpression* Yaw, UFloatExpression* Roll)
 {
@@ -295,6 +307,22 @@ UVectorExpression* UAnimationFunctionLibrary::SmoothVectorConst(UVectorExpressio
 	auto Node = NewObject<USmoothVectorConst>(GetTransientPackage());
 
 	Node->SetInputs(Value, Speed);
+
+	return Node;
+}
+UVectorExpression* UAnimationFunctionLibrary::AddVector(UVectorExpression* A, UVectorExpression* B)
+{
+	auto Node = NewObject<UAddVector>(GetTransientPackage());
+
+	Node->SetInputs(A, B);
+
+	return Node;
+}
+UVectorExpression* UAnimationFunctionLibrary::MultiplyVector(UVectorExpression* A, UVectorExpression* B)
+{
+	auto Node = NewObject<UMultiplyVector>(GetTransientPackage());
+
+	Node->SetInputs(A, B);
 
 	return Node;
 }
@@ -333,6 +361,15 @@ URotatorExpression* UAnimationFunctionLibrary::GetSocketRotation(USkeletalMeshCo
 	auto Node = NewObject<UGetSocketRotation>(GetTransientPackage());
 
 	Node->SetInputs(InSkeletalMesh, InName);
+
+	return Node;
+}
+ // Get point from Camera Direction
+UVectorExpression* UAnimationFunctionLibrary::GetLocationFromCameraDirection(UCameraComponent* InCamera, float InDistance)
+{
+	auto Node = NewObject<UGetLocationFromCameraDirection>(GetTransientPackage());
+
+	Node->SetInputs(InCamera, InDistance);
 
 	return Node;
 }

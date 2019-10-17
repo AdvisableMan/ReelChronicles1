@@ -13,5 +13,18 @@ UCLASS()
 class ANIMATIONS_API UMultiplyRotator : public URotatorExpression
 {
 	GENERATED_BODY()
-	
+
+public:
+
+	void SetInputs(URotatorExpression* InA, URotatorExpression* InB);
+
+	FRotator Evaluate(const FEvaluationContext& InContext) override;
+
+private:
+
+	UPROPERTY()
+	URotatorExpression* A = nullptr;
+
+	UPROPERTY()
+	URotatorExpression* B = nullptr;
 };

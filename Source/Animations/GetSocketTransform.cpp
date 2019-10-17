@@ -13,7 +13,8 @@ void UGetSocketLocation::SetInputs(USkeletalMeshComponent* InSkeletalMesh, FName
 
 FVector UGetSocketLocation::Evaluate(const FEvaluationContext& InContext)
 {
-	return SkeletalMesh->GetSocketLocation(Name);
+	if (SkeletalMesh) { return SkeletalMesh->GetSocketLocation(Name); }
+	else { return FVector::ZeroVector; }
 }
 
 void UGetSocketRotation::SetInputs(USkeletalMeshComponent* InSkeletalMesh, FName InName)
@@ -24,5 +25,6 @@ void UGetSocketRotation::SetInputs(USkeletalMeshComponent* InSkeletalMesh, FName
 
 FRotator UGetSocketRotation::Evaluate(const FEvaluationContext& InContext)
 {
-	return SkeletalMesh->GetSocketRotation(Name);
+	if (SkeletalMesh) { return SkeletalMesh->GetSocketRotation(Name); }
+	else { return FRotator::ZeroRotator; }
 }

@@ -9,6 +9,8 @@
 #include "VoidExpression.h"
 #include "TraceExpression.h"
 
+#include "Camera/CameraComponent.h"
+
 #include "AnimationFunctionLibrary.generated.h"
 
 /**
@@ -87,6 +89,8 @@ public:
 	static URotatorExpression* SmoothRotatorConst(URotatorExpression* Value, float Speed);
 	UFUNCTION(BlueprintCallable, BlueprintPure, meta = (CompactNodeTitle = "r+r"), Category = "Script||Math")
 	static URotatorExpression* AddRotator(URotatorExpression* A, URotatorExpression* B);
+	UFUNCTION(BlueprintCallable, BlueprintPure, meta = (CompactNodeTitle = "r*r"), Category = "Script||Math")
+	static URotatorExpression* MultiplyRotator(URotatorExpression* A, URotatorExpression* B);
 	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Script||Math")
 	static URotatorExpression* MakeRotatorExpression(UFloatExpression* Pitch, UFloatExpression* Yaw, UFloatExpression* Roll);
 	// Math Vector
@@ -94,6 +98,10 @@ public:
 	static UVectorExpression* SmoothVector(UVectorExpression* Value, float Speed);
 	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Script||Math")
 	static UVectorExpression* SmoothVectorConst(UVectorExpression* Value, float Speed);
+	UFUNCTION(BlueprintCallable, BlueprintPure, meta = (CompactNodeTitle = "v+v"), Category = "Script||Math")
+	static UVectorExpression* AddVector(UVectorExpression* A, UVectorExpression* B);
+	UFUNCTION(BlueprintCallable, BlueprintPure, meta = (CompactNodeTitle = "v*v"), Category = "Script||Math")
+	static UVectorExpression* MultiplyVector(UVectorExpression* A, UVectorExpression* B);
 	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Script||Math")
 	static UVectorExpression* MakeVectorExpression(UFloatExpression* X, UFloatExpression* Y, UFloatExpression* Z);
 	// Trace
@@ -104,4 +112,7 @@ public:
 	static UVectorExpression* GetSocketLocation(USkeletalMeshComponent* InSkeletalMesh, FName InName);
 	UFUNCTION(BlueprintCallable, BlueprintPure, meta = (CompactNodeTitle = "getRot"), Category = "Script||Get\Set")
 	static URotatorExpression* GetSocketRotation(USkeletalMeshComponent* InSkeletalMesh, FName InName);
+	// Get point from Camera position
+	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Script||Get\Set")
+	static UVectorExpression* GetLocationFromCameraDirection(UCameraComponent* InCamera, float InDistance);
 };

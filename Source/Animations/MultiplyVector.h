@@ -13,5 +13,18 @@ UCLASS()
 class ANIMATIONS_API UMultiplyVector : public UVectorExpression
 {
 	GENERATED_BODY()
-	
+
+public:
+
+	void SetInputs(UVectorExpression* InA, UVectorExpression* InB);
+
+	FVector Evaluate(const FEvaluationContext& InContext) override;
+
+private:
+
+	UPROPERTY()
+		UVectorExpression* A = nullptr;
+
+	UPROPERTY()
+		UVectorExpression* B = nullptr;
 };
