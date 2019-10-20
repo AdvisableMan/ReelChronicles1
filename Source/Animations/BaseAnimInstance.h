@@ -7,6 +7,8 @@
 #include "Containers/Array.h"
 
 #include "VoidExpression.h"
+#include "BaseCharacter.h"
+#include "GameFramework/CharacterMovementComponent.h"
 
 #include "BaseAnimInstance.generated.h"
 
@@ -28,9 +30,15 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Script")
 	void LoadScript(UVoidExpression* InScript);
-
 	UFUNCTION(BlueprintCallable, Category = "Script")
 	void LoadScripts(TArray<UVoidExpression*> InScripts);
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Code||References")
+	ABaseCharacter* Character = nullptr;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Code||References")
+	USkeletalMeshComponent* Mesh = nullptr;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Code||References")
+	UCharacterMovementComponent* MovementComponent = nullptr;
 
 private:
 
@@ -39,4 +47,22 @@ private:
     TArray<UVoidExpression*> Scripts;
 
     bool bNeedsReset = true;
+
+	float CapsuleHalfHeight = 0.0f;
+
+protected:
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Code||CharacterStates")
+	bool IsInAir = false;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Code||CharacterStates")
+	bool IsSprinting = false;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Code||CharacterStates")
+	float GroundDistance = 0.0f;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Code||MovementInputs")
+	float InputX_Anim = 0.0f;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Code||MovementInputs")
+	float InputZ_Anim = 0.0f;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Code||MovementInputs")
+	float Direction = 0.0f;
+
 };
