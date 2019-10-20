@@ -14,6 +14,8 @@
 #include "MultiplyFloat.h"
 #include "SmoothFloat.h"
 #include "SmoothFloatConst.h"
+#include "ClampFloat.h"
+#include "AbsoluteFloat.h"
 #include "AddRotator.h"
 #include "MultiplyRotator.h"
 #include "SmoothRotator.h"
@@ -245,6 +247,30 @@ UFloatExpression* UAnimationFunctionLibrary::RemapFloat(UFloatExpression* i, UFl
 	auto Node = NewObject<URemapFloat>(GetTransientPackage());
 
 	Node->SetInputs(i, A, B, X, Y);
+
+	return Node;
+}
+UFloatExpression* UAnimationFunctionLibrary::ClampFloat(UFloatExpression* Value, float RangeA, float RangeB)
+{
+	auto Node = NewObject<UClampFloat>(GetTransientPackage());
+
+	Node->SetInputs(Value, RangeA, RangeB);
+
+	return Node;
+}
+UFloatExpression* UAnimationFunctionLibrary::ClampFloatVariable(UFloatExpression* Value, UFloatExpression* RangeA, UFloatExpression* RangeB)
+{
+	auto Node = NewObject<UClampFloatVariable>(GetTransientPackage());
+
+	Node->SetInputs(Value, RangeA, RangeB);
+
+	return Node;
+}
+UFloatExpression* UAnimationFunctionLibrary::AbsoluteFloat(UFloatExpression* Value)
+{
+	auto Node = NewObject<UAbsoluteFloat>(GetTransientPackage());
+
+	Node->SetInputs(Value);
 
 	return Node;
 }

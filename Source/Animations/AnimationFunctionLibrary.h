@@ -23,19 +23,19 @@ class ANIMATIONS_API UAnimationFunctionLibrary : public UBlueprintFunctionLibrar
     
 public:
 	// Get Float
-    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(CompactNodeTitle = "getFloat"), Category = "Script||Get\Set")
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(CompactNodeTitle = "get"), Category = "Script||Get\Set")
     static UFloatExpression* GetFloat(UPARAM(ref) float& Source);
-    UFUNCTION(BlueprintCallable, BlueprintPure, meta = (CompactNodeTitle = "___ getF"), Category = "Script||Get\Set")
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta = (CompactNodeTitle = "___ get"), Category = "Script||Get\Set")
     static UFloatExpression* GetConstantFloat(float Value);
 	// Get Boolean
-	UFUNCTION(BlueprintCallable, BlueprintPure, meta = (CompactNodeTitle = "getBool"), Category = "Script||Get\Set")
+	UFUNCTION(BlueprintCallable, BlueprintPure, meta = (CompactNodeTitle = "get"), Category = "Script||Get\Set")
 	static UFloatExpression* GetBoolean(UPARAM(ref) bool& Source);
-	UFUNCTION(BlueprintCallable, BlueprintPure, meta = (CompactNodeTitle = "___ getB"), Category = "Script||Get\Set")
+	UFUNCTION(BlueprintCallable, BlueprintPure, meta = (CompactNodeTitle = "___ get"), Category = "Script||Get\Set")
 	static UFloatExpression* GetConstantBoolean(bool Value);
 	// Get Rotator
-	UFUNCTION(BlueprintCallable, BlueprintPure, meta = (CompactNodeTitle = "getRot"), Category = "Script||Get\Set")
+	UFUNCTION(BlueprintCallable, BlueprintPure, meta = (CompactNodeTitle = "get"), Category = "Script||Get\Set")
 	static URotatorExpression* GetRotator(UPARAM(ref) FRotator& Source);
-	UFUNCTION(BlueprintCallable, BlueprintPure, meta = (CompactNodeTitle = "___ getR"), Category = "Script||Get\Set")
+	UFUNCTION(BlueprintCallable, BlueprintPure, meta = (CompactNodeTitle = "___ get"), Category = "Script||Get\Set")
 	static URotatorExpression* GetConstantRotator(FRotator Value);
 	UFUNCTION(BlueprintCallable, BlueprintPure, meta = (CompactNodeTitle = "getPitch"), Category = "Script||Get\Set")
 	static UFloatExpression* GetRotatorPitch(URotatorExpression* Source);
@@ -44,9 +44,9 @@ public:
 	UFUNCTION(BlueprintCallable, BlueprintPure, meta = (CompactNodeTitle = "getRoll"), Category = "Script||Get\Set")
 	static UFloatExpression* GetRotatorRoll(URotatorExpression* Source);
     // Get Vector
-	UFUNCTION(BlueprintCallable, BlueprintPure, meta = (CompactNodeTitle = "getVec"), Category = "Script||Get\Set")
+	UFUNCTION(BlueprintCallable, BlueprintPure, meta = (CompactNodeTitle = "get"), Category = "Script||Get\Set")
 	static UVectorExpression* GetVector(UPARAM(ref) FVector& Source);
-	UFUNCTION(BlueprintCallable, BlueprintPure, meta = (CompactNodeTitle = "___ getV"), Category = "Script||Get\Set")
+	UFUNCTION(BlueprintCallable, BlueprintPure, meta = (CompactNodeTitle = "___ get"), Category = "Script||Get\Set")
 	static UVectorExpression* GetConstantVector(FVector Value);
 	UFUNCTION(BlueprintCallable, BlueprintPure, meta = (CompactNodeTitle = "getX"), Category = "Script||Get\Set")
 	static UFloatExpression* GetVectorX(UVectorExpression* Source);
@@ -82,6 +82,12 @@ public:
 	static UFloatExpression* SmoothFloat(UFloatExpression* Value, float Speed);
 	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Script||Math")
 	static UFloatExpression* SmoothFloatConst(UFloatExpression* Value, float Speed);
+	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Script||Math")
+	static UFloatExpression* ClampFloat(UFloatExpression* Value, float RangeA, float RangeB);
+	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Script||Math")
+	static UFloatExpression* ClampFloatVariable(UFloatExpression* Value, UFloatExpression* RangeA, UFloatExpression* RangeB);
+	UFUNCTION(BlueprintCallable, BlueprintPure, meta = (CompactNodeTitle = "fABS"), Category = "Script||Math")
+	static UFloatExpression* AbsoluteFloat(UFloatExpression* Value);
 	// Math Rotator
 	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Script||Math")
 	static URotatorExpression* SmoothRotator(URotatorExpression* Value, float Speed);
