@@ -51,18 +51,18 @@ private:
 	float CapsuleHalfHeight = 0.0f;
 
 protected:
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Code||CharacterStates")
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Code||CharacterStates")
 	bool IsInAir = false;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Code||CharacterStates")
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Code||CharacterStates")
 	bool IsSprinting = false;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Code||CharacterStates")
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Code||CharacterStates")
 	float GroundDistance = 0.0f;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Code||MovementInputs")
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Code||MovementInputs")
 	float InputX_Anim = 0.0f;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Code||MovementInputs")
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Code||MovementInputs")
 	float InputZ_Anim = 0.0f;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Code||MovementInputs")
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Code||MovementInputs")
 	float Direction = 0.0f;
 
 };

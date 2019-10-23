@@ -29,7 +29,7 @@ private:
 	float RangeA = 0.0f;
 
 	UPROPERTY()
-	float RangeB = 0.0f;
+	float RangeB = 1.0f;
 };
 
 UCLASS()
